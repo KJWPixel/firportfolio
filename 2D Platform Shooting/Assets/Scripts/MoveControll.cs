@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class MoveControll : MonoBehaviour
 {
@@ -12,10 +13,11 @@ public class MoveControll : MonoBehaviour
     [SerializeField] Color ShowGroundColor;
     [SerializeField] float ShowGroundLengh;
     [SerializeField] bool ShowGroundCheck;
-
+  
     float verticalVelocity = 0.0f; //떨어지는 속도
     [SerializeField]  bool isGround;//그라운드체크
-    [SerializeField] bool isJump;//점프체크
+    [SerializeField] bool isJump;
+    [SerializeField] bool twoJump;
 
     Vector3 moveDir;
     Camera cam;
@@ -31,18 +33,9 @@ public class MoveControll : MonoBehaviour
         if (ShowGroundCheck == true)
         {
             Debug.DrawLine(transform.position, transform.position - new Vector3(0, ShowGroundLengh), ShowGroundColor);
-          
-            //float sphereRange = 5; Gizmos 테스트
-            //Vector3 cubeSize = new Vector3(3, 10, 7);
-            //Gizmos.color = colorGroundCheck;
-            //Gizmos.DrawWireSphere(transform.position, sphereRange);
-            //Gizmos.DrawWireCube(transform.position, cubeSize);
+            //내 위치, 내위치 - ShowGroundLengh, Color
         }
-        //Debug.DrawLine(); 디버그도 체크용도로 씬 카메라에 선을 그려줄 수 있음
-        //Gizmos.DrawSphere(); 디버그보다 더 많은 시각효과를 제공
-        //Handles.DrawWireArc
     }
-
 
     private void Awake()
     {
@@ -61,16 +54,19 @@ public class MoveControll : MonoBehaviour
     void Update()
     {
         checkGround();
-        checkGravity();       
+            
         moving();
+        reverseAim();
         jump();
+        doubleJump();
 
+        checkGravity();
         anims();
     }
     private void anims()
     {
         anim.SetInteger("Horizontal", (int)moveDir.x);
-        anim.SetBool("IsGround", isGround);
+        //anim.SetBool("IsGround", isGround);
     }
 
     private void moving()
@@ -82,10 +78,20 @@ public class MoveControll : MonoBehaviour
 
     private void jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) == true)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             isJump = true;
-        }                 
+        }
+        twoJump = false;
+    }
+
+    private void doubleJump()
+    {
+        if (isGround == false && isJump == false && twoJump == false && Input.GetKeyDown(KeyCode.Space))
+        {
+            verticalVelocity = JumpForce;
+            twoJump = true;
+        }
     }
 
     private void checkGround()
@@ -96,9 +102,8 @@ public class MoveControll : MonoBehaviour
         {
             return;
         }
-
-        RaycastHit2D hit = //Physics2D.BoxCast(box2Coll.bounds.center, box2Coll.bounds.size, 0f, Vector2.down, ShowGroundLengh, LayerMask.GetMask("Ground"));//아직까지 이해할 수 없음
-        Physics2D.Raycast(transform.position, Vector2.down, ShowGroundLengh, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.BoxCast(box2Coll.bounds.center, box2Coll.bounds.size, 0f, Vector2.down, ShowGroundLengh, LayerMask.GetMask("Ground"));//아직까지 이해할 수 없음
+        //Physics2D.Raycast(transform.position, Vector2.down, ShowGroundLengh, LayerMask.GetMask("Ground"));
 
         if (hit)
         {
@@ -108,32 +113,63 @@ public class MoveControll : MonoBehaviour
 
     private void checkGravity()
     {
-        if (isGround == true)
-        {
-            return;
-        }
-        else if (isGround == false)
+        if (isGround == false)//공중에 떠있는 상태
         {
             verticalVelocity += Physics.gravity.y * Time.deltaTime; //-9.81 
 
-            if (verticalVelocity < -10f)
+            if (verticalVelocity < -10f) //중력 -10이하로 내려갈 수 없음
             {
                 verticalVelocity = -10f;
             }
-        }      
+        }
         else if (isJump == true)
-        {
-            isJump = false;
+        {          
             verticalVelocity = JumpForce;
         }
+        else if (isGround == true)
+        {
+            verticalVelocity = 0;
+        }
+        isJump = false;
         rigid.velocity = new Vector2(rigid.velocity.x, verticalVelocity);
+        
     }
 
-    private void reverAnim()
+    private void reverseAim()
     {
-        Vector2 mouseworldPos = cam.ScreenToWorldPoint(Input.mousePosition);
+        //방향키에 따른 플레이어 애니메이션 방향
+        //Vector3 scale = transform.localScale;
+        //if (moveDir.x < 0 && scale.x != 1.0f)//왼쪽
+        //{
+        //    scale.x = 1.0f;
+        //    transform.localScale = scale;
+        //    Debug.Log("<color=blue>동작</color>");
+        //}
+        //else if (moveDir.x > 0 && scale.x != -1.0f)//오른쪽 
+        //{
+        //    scale.x = -1.0f;
+        //    transform.localScale = scale;
+        //    Debug.Log("<color=rad>동작</color>");
+        //}      
+
+        //마우스커서에 따른 플레이어 애니메이션 방향
+        //WorldPoint로 하지 않을 시 캔버스 기준으로 좌표를 찍음
+        //WorldPoint의 경우 정중앙이 x 0 y 0으로 찍힘
+        Vector2 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 playerPos = transform.position;
-        Vector2 fixedPos = mouseworldPos - mouseworldPos;
+        Vector2 fixedPos = mouseWorldPos - playerPos;
+
+        Vector3 plalyerScale = transform.localScale;
+        if (fixedPos.x > 0 && plalyerScale.x != -1.0f)
+        {
+            plalyerScale.x = -1.0f;
+        }
+        else if (fixedPos.x < 0 && plalyerScale.x != 1.0f)
+        {
+            plalyerScale.x = 1.0f;
+        }
+        transform.localScale = plalyerScale;
+
     }
 
 }
