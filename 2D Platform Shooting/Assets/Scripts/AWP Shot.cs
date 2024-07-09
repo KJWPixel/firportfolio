@@ -8,6 +8,7 @@ public class AWPShot : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject bullet;
     [SerializeField] float shotTime;
+    [SerializeField] Transform dynamicObject;
 
     float shotTimer;
 
@@ -43,12 +44,4 @@ public class AWPShot : MonoBehaviour
             }
         }
     }
-
-    private void shot()
-    {
-       
-        
-    }
-
-
 }
