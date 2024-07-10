@@ -17,7 +17,6 @@ public class AWPShot : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         awpShot();
@@ -38,7 +37,7 @@ public class AWPShot : MonoBehaviour
             if (Time.time >= shotTime)
             {
                 //ÃÑ¾Ë »ý¼º
-                Instantiate(bullet, spawnPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward));
+                Instantiate(bullet, spawnPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward), dynamicObject);
                 //ÀçÀåÀü ÃÑ¾Ë µô·¹ÀÌ 
                 shotTimer = shotTime + Time.time;
             }

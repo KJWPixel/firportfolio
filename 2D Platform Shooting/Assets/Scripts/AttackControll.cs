@@ -5,7 +5,6 @@ using UnityEngine;
 public class AttackControll : MonoBehaviour
 {
     [SerializeField] Transform hand;
-    [SerializeField] GameObject weapon;
     //[SerializeField] GameObject bullet;
     //[SerializeField] Transform bulletSpawnPoint;
     //[SerializeField] float shotTime;
