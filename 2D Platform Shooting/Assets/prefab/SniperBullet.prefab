@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 392536126595887519}
   m_Layer: 0
   m_Name: SniperBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 50
   lifeTime: 3
+  bulletDemage: 5
 --- !u!70 &392536126595887519
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

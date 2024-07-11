@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3521281966934337681}
   m_Layer: 0
   m_Name: ShotgunBullet 2
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,9 +30,9 @@ Transform:
   m_Children:
   - {fileID: 1140280832117509248}
   - {fileID: 2373397547997865442}
-  - {fileID: 1561012624066914165}
+  - {fileID: 4923414457239342287}
   - {fileID: 4025543676635147593}
-  - {fileID: 5867505930174973982}
+  - {fileID: 42571326392460198}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,7 +97,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41944d8f92c36c941a1d0c4da613db9e, type: 3}
---- !u!4 &1561012624066914165 stripped
+--- !u!4 &4923414457239342287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5907227285348330427, guid: 41944d8f92c36c941a1d0c4da613db9e, type: 3}
   m_PrefabInstance: {fileID: 1561012624066914164}
@@ -163,7 +163,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41944d8f92c36c941a1d0c4da613db9e, type: 3}
---- !u!4 &5867505930174973982 stripped
+--- !u!4 &42571326392460198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5907227285348330427, guid: 41944d8f92c36c941a1d0c4da613db9e, type: 3}
   m_PrefabInstance: {fileID: 5867505930174973981}

@@ -6,10 +6,10 @@ public class ShotWeapon : MonoBehaviour
 {
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject bullet;
-    [SerializeField] float shotTime;
+    [SerializeField] float shotDelayTime;
     [SerializeField] Transform dynamicObject;
 
-    float shotTimer;
+    float shotDelayTimer;
 
     void Start()
     {
@@ -32,16 +32,15 @@ public class ShotWeapon : MonoBehaviour
 
         //축으로 부터 방향과 각도의 회전값
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (Time.time >= shotTime)
+        shotDelayTimer = Time.deltaTime;
+        if (Input.GetMouseButtonDown(0)) //마우스클릭 발사
+        { 
+            if (shotDelayTimer > shotDelayTime)//ShotDelay 해당 현재 미구현
             {
-                //총알 생성
+                //총알 생성                                                  //앵글 각도 
                 Instantiate(bullet, spawnPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward), dynamicObject);
-                //재장전 총알 딜레이 
-                shotTimer = shotTime + Time.time;
+                shotDelayTimer = 0;
             }
         }
     }

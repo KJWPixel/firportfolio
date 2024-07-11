@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class PlayerControll : MonoBehaviour
 {
     [Header("플레이어 체력")]
     [SerializeField] float maxHp;
-    [SerializeField] float curHp;
+    [SerializeField] float hp;
 
     [Header("플레이어 이동 및 점프")]
     [SerializeField] float moveSpeed;
@@ -21,6 +22,7 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] Color showGroundColor;
     [SerializeField] bool isGround;
     float verticalVelocity;
+    bool playerDie = false;
 
     Camera cam;
     Vector3 moveDir;
@@ -171,5 +173,20 @@ public class PlayerControll : MonoBehaviour
             plalyerScale.x = 1.0f;
         }
         transform.localScale = plalyerScale;
+    }
+
+    public void Hit(float _damage)
+    {
+        if (playerDie == true)
+        {
+            return;
+        }
+
+        hp -= _damage;
+        if (hp <= 0)
+        {
+            playerDie = true;
+            Destroy(gameObject);
+        }
     }
 }
