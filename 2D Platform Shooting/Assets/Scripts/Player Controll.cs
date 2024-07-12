@@ -40,6 +40,15 @@ public class PlayerControll : MonoBehaviour
         }
     }
 
+    //private void OnTriggerEnter2D(Collider2D collision)//RefNullError 발생으로 주석
+    //{
+    //    if(collision.tag == "Enemy")
+    //    {
+    //        Enemy enemy = collision.GetComponent<Enemy>();
+    //        Hit(enemy.damage);
+    //    }
+    //}
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -183,6 +192,7 @@ public class PlayerControll : MonoBehaviour
         }
 
         hp -= _damage;
+
         if (hp <= 0)
         {
             playerDie = true;

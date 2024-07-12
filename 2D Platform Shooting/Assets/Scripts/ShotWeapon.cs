@@ -33,7 +33,7 @@ public class ShotWeapon : MonoBehaviour
         //축으로 부터 방향과 각도의 회전값
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        shotDelayTimer = Time.deltaTime;
+        shotDelayTimer += Time.deltaTime;
         if (Input.GetMouseButtonDown(0)) //마우스클릭 발사
         { 
             if (shotDelayTimer > shotDelayTime)//ShotDelay 해당 현재 미구현

@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 20
   lifeTime: 0.3
-  bulletDemage: 3
+  bulletDamage: 5
 --- !u!70 &7821021385565787068
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

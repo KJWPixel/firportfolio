@@ -141,11 +141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4554262048832116272, guid: 06ef92991c635e944ad86db22371542a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.17069
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4554262048832116272, guid: 06ef92991c635e944ad86db22371542a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3925467
+      value: 3.48
       objectReference: {fileID: 0}
     - target: {fileID: 4554262048832116272, guid: 06ef92991c635e944ad86db22371542a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -183,9 +183,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: flyingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5794753126168784074, guid: 06ef92991c635e944ad86db22371542a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292670299414791489, guid: 06ef92991c635e944ad86db22371542a, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6292670299414791489, guid: 06ef92991c635e944ad86db22371542a, type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6403767699983422015, guid: 06ef92991c635e944ad86db22371542a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -292,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1848458947}
   bullet: {fileID: 680431254917345478, guid: 7e560cd706f53124d83cca61ee3635b5, type: 3}
-  shotDelayTime: 0
+  shotDelayTime: 0.5
   dynamicObject: {fileID: 1739255837}
 --- !u!1 &705507993
 GameObject:
@@ -1036,7 +1048,7 @@ MonoBehaviour:
   jumpForce: 5
   doublejumpCount: 2
   jumping: 0
-  showGroundCheck: 1
+  showGroundCheck: 0
   showGroundLengh: 0.03
   showGroundColor: {r: 1, g: 0, b: 0, a: 1}
   isGround: 0
@@ -1186,7 +1198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1348561632}
   bullet: {fileID: 6869825065857501910, guid: 56027c0112f886f4cbfdb264e7a61315, type: 3}
-  shotDelayTime: 0
+  shotDelayTime: 1
   dynamicObject: {fileID: 1739255837}
 --- !u!1 &1931217877
 GameObject:
@@ -1235,79 +1247,6 @@ MonoBehaviour:
   cursor:
   - {fileID: 0}
   - {fileID: 0}
---- !u!1001 &1955732012
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.9499025
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.2071905
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 206816832800353115, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 698101542902737377, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1989720643600865113, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_Name
-      value: GhostEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3591091128005907869, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: a37b72af903a0ca429ad5aa2491c1121, type: 2}
-    - target: {fileID: 7016545928775942793, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b0d30a8df6ee423408e3f17429ca487f, type: 3}
 --- !u!1 &2129997462
 GameObject:
   m_ObjectHideFlags: 0
