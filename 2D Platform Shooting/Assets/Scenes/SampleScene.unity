@@ -195,6 +195,14 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6339795617258939783, guid: 06ef92991c635e944ad86db22371542a, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1741724824}
+    - target: {fileID: 6339795617258939783, guid: 06ef92991c635e944ad86db22371542a, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6403767699983422015, guid: 06ef92991c635e944ad86db22371542a, type: 3}
       propertyPath: m_TagString
       value: Enemy

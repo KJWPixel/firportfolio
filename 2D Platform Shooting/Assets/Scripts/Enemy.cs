@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] public float damage;
     bool enemyDie = false;
+    Transform Player;
 
     [SerializeField] bool chasePlayer;
     [SerializeField] bool showChaseCheck;
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         cap2coll = GetComponent<CapsuleCollider2D>();
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -70,9 +72,11 @@ public class Enemy : MonoBehaviour
     {
         if (chasePlayer == true)
         {
-            //PlayerControll player = transform.GetComponent<PlayerControll>();
-          
-            //rigid.velocity = enemyDir;
+            //Vector3 playerDir = Player.transform.position - transform.position;   
+            //transform.position += playerDir * moveSpeed * Time.deltaTime;
+            Vector3 playerDir = Player.position - transform.position;
+            transform.position += playerDir * moveSpeed * Time.deltaTime;
+
         }
     }
 
