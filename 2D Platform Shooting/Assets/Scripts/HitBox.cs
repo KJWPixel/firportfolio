@@ -23,6 +23,11 @@ public class HitBox : MonoBehaviour
         enemy.TriggerEnter(collision, hitBoxType);
     }
 
+    private void nTriggerStay2D(Collider2D collision)
+    {
+        enemy.TriggerEnter(collision, hitBoxType);
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         enemy.TriggerExit(collision, hitBoxType);

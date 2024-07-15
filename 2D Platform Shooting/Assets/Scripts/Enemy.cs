@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -21,14 +22,15 @@ public class Enemy : MonoBehaviour
     CapsuleCollider2D cap2coll;
 
     Vector3 enemyDir;
-
+    HitBox Hitbox;
     private void OnTriggerEnter2D(Collider2D collision)//해당 Trigger PlayerControll에서 해결됨
     {
-        if (collision.tag == "Player")//플레이어에 닿았을 경우 적의 damage가 player의 Hit매개변수에 들어가 플레이어의 hp를 감소시킴
-        {
-            PlayerControll player = collision.GetComponent<PlayerControll>();//collision으로 인한 Error 해결완료
-            player.Hit(damage);
-        }
+        //if (collision.tag == "Player")//플레이어에 닿았을 경우 적의 damage가 player의 Hit매개변수에 들어가 플레이어의 hp를 감소시킴
+        //{
+        //    PlayerControll player = collision.GetComponent<PlayerControll>();//collision으로 인한 Error 해결완료
+        //    player.Hit(damage);
+        //}
+        //아래 HitBox.enumHitBoxType.Body:에서 실행되므로 주석처리 
     }
 
     private void OnDrawGizmos()//Gizmos 체크의 용도
@@ -48,7 +50,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         cap2coll = GetComponent<CapsuleCollider2D>();
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        Player = GameObject.Find("Player").GetComponent<Transform>();
+        Hitbox = GetComponent<HitBox>();
     }
 
     // Update is called once per frame
@@ -72,11 +75,13 @@ public class Enemy : MonoBehaviour
     {
         if (chasePlayer == true)
         {
-            //Vector3 playerDir = Player.transform.position - transform.position;   
-            //transform.position += playerDir * moveSpeed * Time.deltaTime;
-            Vector3 playerDir = Player.position - transform.position;
-            transform.position += playerDir * moveSpeed * Time.deltaTime;
+            Vector3 playerDir = Player.transform.position - transform.position;
+            transform.position += playerDir * moveSpeed *    Time.deltaTime;
+            //Start에서 GameObject.Find에서 Player의 Transform컴포넌트를 가져옴
 
+            //Vector3 playerDir = Player.position - transform.position; 
+            //transform.position += playerDir * moveSpeed * Time.deltaTime;
+            //둘다 동일한 동작
         }
     }
 
@@ -100,7 +105,7 @@ public class Enemy : MonoBehaviour
     {
         switch (_type)
         {
-            case HitBox.enumHitBoxType.Body:
+            case HitBox.enumHitBoxType.Body://0
 
                 if (other.tag == "Player")//플레이어에 닿았을 경우 적의 damage가 player의 Hit매개변수에 들어가 플레이어의 hp를 감소시킴
                 {
@@ -109,10 +114,18 @@ public class Enemy : MonoBehaviour
                 }
                 break;
 
-            case HitBox.enumHitBoxType.Chase:
+            case HitBox.enumHitBoxType.Chase://1
                 chasePlayer = true;
                 break;
         }
+    }
+
+    public void TriggerStay(Collider2D other, HitBox.enumHitBoxType _type)
+    {
+        if (other.tag == "Player")
+        {
+            playerTracking();
+        }            
     }
 
     public void TriggerExit(Collider2D other, HitBox.enumHitBoxType _type)
