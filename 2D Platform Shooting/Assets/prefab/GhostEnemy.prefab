@@ -200,6 +200,7 @@ MonoBehaviour:
   showChaseCheck: 1
   chaseDistance: 5
   chaseDistanceColor: {r: 1, g: 0, b: 0, a: 1}
+  target: {fileID: 0}
 --- !u!95 &3591091128005907869
 Animator:
   serializedVersion: 5
@@ -236,7 +237,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
