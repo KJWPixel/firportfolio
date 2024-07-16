@@ -49,21 +49,6 @@ public class Enemy : MonoBehaviour
             //Gizmos.DrawWireCube(transform.position, cubeSize);
         }
     }
-    public void Hit(float _damage)
-    {
-        if (enemyDie == true)
-        {
-            return;
-        }
-
-        hp -= _damage;
-
-        if (hp <= 0)
-        {
-            enemyDie = true;
-            Destroy(gameObject);
-        }
-    }
 
     public void TriggerEnter(Collider2D other, HitBox.enumHitBoxType _type)
     {
@@ -86,11 +71,6 @@ public class Enemy : MonoBehaviour
 
     public void TriggerStay(Collider2D other, HitBox.enumHitBoxType _type)
     {
-        if (other.tag == "Player")
-        {
-            playerTracking();
-            Invoke("playerTracking", 1);
-        }
     }
 
     public void TriggerExit(Collider2D other, HitBox.enumHitBoxType _type)
@@ -102,6 +82,7 @@ public class Enemy : MonoBehaviour
                 break;
 
             case HitBox.enumHitBoxType.Chase:
+                chasePlayer = false;
                 break;
         }
     }
@@ -122,37 +103,59 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //chasePlayerCheck();
         playerTracking();
+        turnAnims();
     }
 
-    //private void chasePlayerCheck()
-    //{
-    //    RaycastHit2D playerHit = Physics2D.CircleCast(cap2coll.bounds.center, 3f, new Vector2(3,3));
+    public void Hit(float _damage)
+    {
+        if (enemyDie == true)
+        {
+            return;
+        }
 
-    //    if(playerHit)
-    //    {
-    //        chasePlayer = true;
-    //    }
-    //}
+        hp -= _damage;
+
+        if (hp <= 0)
+        {
+            enemyDie = true;
+            Destroy(gameObject);
+        }
+    }
 
     private void playerTracking()
     {
-        if(playerTrackingOn == true)
+        if(chasePlayer == true)
         {
-                //Vector3 playerDir = Player.transform.position - transform.position;
-                //transform.position += playerDir * moveSpeed *    Time.deltaTime;
-                //Start에서 GameObject.Find에서 Player의 Transform컴포넌트를 가져옴
+            Vector3 playerDir = Player.transform.position - transform.position;
+            playerDir.Normalize();
+            transform.position += playerDir * moveSpeed * Time.deltaTime;
+            //Start에서 GameObject.Find에서 Player의 Transform컴포넌트를 가져옴
 
-                //Vector3 playerDir = Player.position - transform.position; 
-                //transform.position += playerDir * moveSpeed * Time.deltaTime;
-                //둘다 동일한 동작
+            //Vector3 playerDir = Player.position - transform.position; 
+            //transform.position += playerDir * moveSpeed * Time.deltaTime;
+            //둘다 동일한 동작
 
-                if (Vector2.Distance(transform.position, target.position) > chaseDistance)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-                }
-            
+            //if (Vector2.Distance(transform.position, target.position) > chaseDistance)
+            //{
+            //    transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            //}
         }       
+    }
+
+    private void turnAnims()
+    {
+        Vector3 scale = transform.localScale;
+        Vector2 dir = transform.position;
+        if (dir.x > moveSpeed)
+        {
+            scale.x = -1;
+            transform.localScale = scale;
+        }
+        if (dir.x < moveSpeed)
+        {
+            scale.x = 1;
+            transform.localScale = scale;
+        }
     }
 }

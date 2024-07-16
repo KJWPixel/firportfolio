@@ -187,7 +187,7 @@ MonoBehaviour:
   moveSpeed: 3
   damage: 5
   chasePlayer: 0
-  showChaseCheck: 1
+  showChaseCheck: 0
   chaseDistance: 5
   chaseDistanceColor: {r: 1, g: 0, b: 0, a: 1}
   playerTrackingOn: 1

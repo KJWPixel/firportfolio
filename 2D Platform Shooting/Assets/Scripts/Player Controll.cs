@@ -7,7 +7,7 @@ public class PlayerControll : MonoBehaviour
 {
     [Header("플레이어 체력")]
     [SerializeField] float maxHp;
-    [SerializeField] float hp;
+    [SerializeField] public float hp;
 
     [Header("플레이어 이동 및 점프")]
     [SerializeField] float moveSpeed;
@@ -39,15 +39,6 @@ public class PlayerControll : MonoBehaviour
             //내 위치, 내위치 - ShowGroundLengh, Color
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)//RefNullError 발생으로 주석
-    //{
-    //    if(collision.tag == "Enemy")
-    //    {
-    //        Enemy enemy = collision.GetComponent<Enemy>();
-    //        Hit(enemy.damage);
-    //    }
-    //}
 
     private void Awake()
     {

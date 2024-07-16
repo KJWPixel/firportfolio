@@ -26,8 +26,8 @@ public class EnemyWalkControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move();
         groundCheck();
+        move();     
         anims();
         turnAnim();
     }
@@ -40,7 +40,7 @@ public class EnemyWalkControll : MonoBehaviour
     private void turn()
     {
         turnMove = Random.Range(-1, 2);//랜덤값의 Range의 경우 -1~1까지됨
-        Invoke("turn", 5);//5초후 다시 재실행
+        Invoke("turn", 3);//3초후 다시 재실행
     }
 
     private void groundCheck()
@@ -53,7 +53,7 @@ public class EnemyWalkControll : MonoBehaviour
         {
             turnMove *= -1;
             CancelInvoke();
-            Invoke("turn", 5);
+            Invoke("turn", 3);
         }
     }
 
