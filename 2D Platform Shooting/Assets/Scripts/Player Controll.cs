@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControll : MonoBehaviour
 {
     [Header("플레이어 체력")]
     [SerializeField] float maxHp;
     [SerializeField] public float hp;
+    [SerializeField] Image HpBar;
 
     [Header("플레이어 이동 및 점프")]
     [SerializeField] float moveSpeed;
@@ -189,5 +190,10 @@ public class PlayerControll : MonoBehaviour
             playerDie = true;
             Destroy(gameObject);
         }
+    }
+    public void SetHp(float _maxHp, float _curHp)
+    {
+        _maxHp = maxHp;
+        _curHp = hp;
     }
 }
