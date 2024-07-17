@@ -104,7 +104,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         playerTracking();
-        turnAnims();
+        //turnAnims();
     }
 
     public void Hit(float _damage)

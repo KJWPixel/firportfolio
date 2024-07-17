@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4758295402195223013}
   - component: {fileID: 2924635349578403261}
   - component: {fileID: 7590732815249605060}
-  - component: {fileID: 8796014384658019134}
   - component: {fileID: 6890776962207514945}
+  - component: {fileID: 8796014384658019134}
   - component: {fileID: 1991890082761869246}
   m_Layer: 0
   m_Name: walkEnemy
@@ -110,6 +110,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6890776962207514945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690569107638931033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ce2ce17340ea14eab21441f8e0069d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  turnMove: 0
 --- !u!114 &8796014384658019134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,20 +146,6 @@ MonoBehaviour:
   chaseDistanceColor: {r: 1, g: 0, b: 0, a: 1}
   playerTrackingOn: 0
   target: {fileID: 4758295402195223013}
---- !u!114 &6890776962207514945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4690569107638931033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48ce2ce17340ea14eab21441f8e0069d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  turnMove: 0
 --- !u!50 &1991890082761869246
 Rigidbody2D:
   serializedVersion: 4

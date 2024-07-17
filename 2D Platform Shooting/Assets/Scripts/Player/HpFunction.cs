@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HpFunction : MonoBehaviour
 {
     [SerializeField] Image imgaeHp;
-
-    PlayerControll playerControll;
+    float _curHp;
+    float _maxHp;
 
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class HpFunction : MonoBehaviour
 
     private void initHp()
     {
-        imgaeHp.fillAmount = 1;
+        imgaeHp.fillAmount = 1f;
     }
     void Start()
     {
@@ -25,9 +26,10 @@ public class HpFunction : MonoBehaviour
 
     void Update()
     {
-        
+        //imgaeHp.fillAmount = 0.5f;//fillAmount Test
+        //hpText.text = imgaeHp.fillAmount.ToString();
     }
-    public void SetHp(float _maxHp, float _curHp)//0~1
+    public void SetHp(float _curHp, float _maxHp)
     {
         imgaeHp.fillAmount = _curHp / _maxHp;
     }

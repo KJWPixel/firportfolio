@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
         {
             Destroy(gameObject);
             PlayerControll palyer = collision.GetComponent<PlayerControll>();
-            palyer.hp += heal;
+            palyer.curHp += heal;
         }
     }
     private void Awake()

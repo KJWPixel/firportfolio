@@ -6,21 +6,34 @@ public class ShotWeapon : MonoBehaviour
 {
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject bullet;
+    [SerializeField] int bulletCount;
+    [SerializeField] int bulletCounting;
+
     [SerializeField] float shotDelayTime;
+    float shotDelayTimer;
+
     [SerializeField] Transform dynamicObject;
 
-    float shotDelayTimer;
+    [SerializeField] float reloadTime;
+    float reloadTimer;
+
+    
 
     void Start()
     {
-
+        initBulletCount();
     }
 
     void Update()
     {
         Shot();
+        reload();
     }
 
+    private void initBulletCount()
+    {
+        bulletCounting = bulletCount;
+    }
     private void Shot()
     {
         //카메라 월드포인트에서 마우스 거리
@@ -35,13 +48,28 @@ public class ShotWeapon : MonoBehaviour
 
         shotDelayTimer += Time.deltaTime;
         if (Input.GetMouseButtonDown(0)) //마우스클릭 발사
-        { 
-            if (shotDelayTimer > shotDelayTime)//ShotDelay 해당 현재 미구현
+        {
+            if (shotDelayTimer > shotDelayTime && bulletCounting > 0)//ShotDelay 구현
             {
                 //총알 생성                                                  //앵글 각도 
                 Instantiate(bullet, spawnPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward), dynamicObject);
-                shotDelayTimer = 0;
+                bulletCounting--;
+                shotDelayTimer = 0;               
             }
         }
     }
+
+    private void reload()
+    {
+        if (bulletCounting <= 0)//bulletCount가 0이 되면 Reload Time동작
+        {
+            reloadTimer += Time.deltaTime;
+            if (reloadTimer > reloadTime)
+            {
+                bulletCounting = bulletCount;
+            }
+        }
+    }
+
+    
 }

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Handles;
 
 public class PlayerControll : MonoBehaviour
 {
     [Header("플레이어 체력")]
-    [SerializeField] float maxHp;
-    [SerializeField] public float hp;
-    [SerializeField] Image HpBar;
+    [SerializeField] public float maxHp;
+    [SerializeField] public float curHp;
 
     [Header("플레이어 이동 및 점프")]
     [SerializeField] float moveSpeed;
@@ -32,6 +32,8 @@ public class PlayerControll : MonoBehaviour
     BoxCollider2D box2coll;
     Animator anim;
 
+
+
     private void OnDrawGizmos()//Gizmos 체크의 용도
     {
         if (showGroundCheck == true)
@@ -47,6 +49,7 @@ public class PlayerControll : MonoBehaviour
         cap2coll = GetComponent<CapsuleCollider2D>();
         box2coll = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        
     }
     void Start()
     {
@@ -183,17 +186,14 @@ public class PlayerControll : MonoBehaviour
             return;
         }
 
-        hp -= _damage;
+        curHp -= _damage;
 
-        if (hp <= 0)
+        if (curHp <= 0)
         {
             playerDie = true;
             Destroy(gameObject);
         }
     }
-    public void SetHp(float _maxHp, float _curHp)
-    {
-        _maxHp = maxHp;
-        _curHp = hp;
-    }
+
+    
 }
