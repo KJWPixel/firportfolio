@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c501bb642ef944c80b3f1abb203d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heal: 10
+  heal: 30
 --- !u!70 &5059593584151007412
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
