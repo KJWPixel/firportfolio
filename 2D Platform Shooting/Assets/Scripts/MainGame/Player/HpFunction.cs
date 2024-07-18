@@ -7,9 +7,9 @@ using TMPro;
 public class HpFunction : MonoBehaviour
 {
     [SerializeField] Image imgaeHp;
+    [SerializeField] TMP_Text textHp; 
     
     PlayerControll playerControll;
-
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class HpFunction : MonoBehaviour
     void Update()
     {
         //imgaeHp.fillAmount = 0.5f;//fillAmount Test
-        //hpText.text = imgaeHp.fillAmount.ToString();
+        //textHp.text = imgaeHp.fillAmount.ToString();
         currentHp();
     }
     public void SetHp(float _curHp, float _maxHp)
@@ -40,5 +40,6 @@ public class HpFunction : MonoBehaviour
     private void currentHp()
     {
         imgaeHp.fillAmount = playerControll.curHp / playerControll.maxHp;
+        textHp.text = playerControll.curHp.ToString();
     }
 }

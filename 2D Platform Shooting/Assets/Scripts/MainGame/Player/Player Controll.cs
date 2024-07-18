@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Handles;
 
 public class PlayerControll : MonoBehaviour
 {
@@ -18,6 +17,11 @@ public class PlayerControll : MonoBehaviour
     int doublejumpCounting;
     [SerializeField] bool jumping;
 
+    [Header("플레이어 무적 시간")]
+    [SerializeField] bool invincibilty;
+    [SerializeField] float invincibiltyTime;//무적시간   
+    float invincibiltyTimer;
+
     [Header("Ground 체크")]
     [SerializeField] bool showGroundCheck;
     [SerializeField] float showGroundLengh;
@@ -32,6 +36,7 @@ public class PlayerControll : MonoBehaviour
     CapsuleCollider2D cap2coll;
     BoxCollider2D box2coll;
     Animator anim;
+    SpriteRenderer spriteRenderer;
 
     private void OnDrawGizmos()//Gizmos 체크의 용도
     {
@@ -48,8 +53,9 @@ public class PlayerControll : MonoBehaviour
         cap2coll = GetComponent<CapsuleCollider2D>();
         box2coll = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if(Instance == null)//Instance가 null이면 Instance를 채워줌
+        if (Instance == null)//Instance가 null이면 Instance를 채워줌
         {
             Instance = this;
         }
@@ -75,6 +81,7 @@ public class PlayerControll : MonoBehaviour
         reverseAim();
 
         checkGravity();
+        invincibiltyCheck();
         anims();
     }
 
@@ -189,12 +196,19 @@ public class PlayerControll : MonoBehaviour
 
     public void Hit(float _damage)
     {
-        if (playerDie == true)
+        if(invincibilty == true || playerDie == true)//무적이 true 또는 playerDie가 true면 리턴
         {
             return;
         }
 
+        //if (playerDie == true)
+        //{
+        //    return;
+        //}
+
         curHp -= _damage;
+
+        invincibilty = true;
 
         if (curHp <= 0)
         {
@@ -203,10 +217,25 @@ public class PlayerControll : MonoBehaviour
         }
     }
 
-    //public void SetHp(float _curHp, float _maxHp)
-    //{
-    //    HpFunction.SetHp(_maxHp, _curHp);
-    //}
+    private void invincibiltyCheck()
+    {
+        //Player 몹에 닿을 시 Hit함수에서 데미지를 입고, invincibilty = true면 
+        //invincibiltyCheck함수에서 invincibilty == true를 감지하고 invincibiltyTime시간에 맞쳐 Timer가 동작하는 동안 Sprite의 Color.a값이 0.5f
+        //invincibiltyTime이 끝이 나면 Sprite의 Color.a값을 1f로 되돌림
+        Color color = spriteRenderer.color;
 
+        if (invincibilty == true)
+        {       
+            color.a = 0.5f;
+            invincibiltyTimer += Time.deltaTime;
+        }
 
+        if (invincibiltyTimer > invincibiltyTime)
+        {
+            color.a = 1f;
+            invincibiltyTimer = 0f;
+            invincibilty = false;
+        }
+        spriteRenderer.color = color;
+    }
 }

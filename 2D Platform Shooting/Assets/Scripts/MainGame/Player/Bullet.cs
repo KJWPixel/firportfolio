@@ -16,6 +16,11 @@ public class Bullet : MonoBehaviour
             Enemy enemy = collision.GetComponentInParent<Enemy>();
             enemy.Hit(bulletDamage);
         }
+
+        if(collision.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
     }
     void Start()
     {
