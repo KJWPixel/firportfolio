@@ -116,7 +116,7 @@ Transform:
   - {fileID: 3520118381969328301}
   - {fileID: 7441722027610953732}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4324433536935035852
 SpriteRenderer:
@@ -184,14 +184,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 15
   hp: 15
-  moveSpeed: 3
+  moveSpeed: 5
   damage: 5
   chasePlayer: 0
   showChaseCheck: 0
   chaseDistance: 5
   chaseDistanceColor: {r: 1, g: 0, b: 0, a: 1}
   playerTrackingOn: 1
-  target: {fileID: 0}
 --- !u!95 &8407451987733695450
 Animator:
   serializedVersion: 5

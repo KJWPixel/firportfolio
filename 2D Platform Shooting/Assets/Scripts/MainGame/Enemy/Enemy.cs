@@ -18,10 +18,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float chaseDistance;
     [SerializeField] Color chaseDistanceColor;
     [SerializeField] bool playerTrackingOn;
-    [SerializeField] Transform target;
 
     Rigidbody2D rigid;
     Animator anim;
+    SpriteRenderer spriteRenderer;
 
     Vector3 enemyDir;
     HitBox Hitbox;
@@ -104,7 +104,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         playerTracking();
-        //turnAnims();
+        turnAnims();
     }
 
     public void Hit(float _damage)
@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour
         if(chasePlayer == true)
         {
             Vector3 playerDir = Player.transform.position - transform.position;
-            playerDir.Normalize();
+            playerDir.Normalize();//피타고라스 x,y직선거리좌표에서 그 사이 값에 따른 속도를 x,y축과 같게 만듬
             transform.position += playerDir * moveSpeed * Time.deltaTime;
             //Start에서 GameObject.Find에서 Player의 Transform컴포넌트를 가져옴
 
@@ -146,13 +146,13 @@ public class Enemy : MonoBehaviour
     private void turnAnims()
     {
         Vector3 scale = transform.localScale;
-        Vector2 dir = transform.position;
-        if (dir.x > moveSpeed)
+        enemyDir.x = rigid.velocity.x;
+        if (enemyDir.x > moveSpeed)
         {
             scale.x = -1;
             transform.localScale = scale;
         }
-        if (dir.x < moveSpeed)
+        if (enemyDir.x < moveSpeed)
         {
             scale.x = 1;
             transform.localScale = scale;
