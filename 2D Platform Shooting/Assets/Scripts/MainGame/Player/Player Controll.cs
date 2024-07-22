@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerControll : MonoBehaviour
 {
@@ -28,8 +29,8 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] Color showGroundColor;
     [SerializeField] bool isGround;
     float verticalVelocity;
-    bool playerDie = false;
-
+    public bool playerDie = false;
+ 
     Camera cam;
     Vector3 moveDir;
     Rigidbody2D rigid;
@@ -213,7 +214,6 @@ public class PlayerControll : MonoBehaviour
         if (curHp <= 0)
         {
             playerDie = true;
-            Destroy(gameObject);
         }
     }
 
@@ -238,4 +238,6 @@ public class PlayerControll : MonoBehaviour
         }
         spriteRenderer.color = color;
     }
+
+    
 }

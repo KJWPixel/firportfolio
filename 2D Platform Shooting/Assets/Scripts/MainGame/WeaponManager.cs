@@ -9,9 +9,9 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] GameObject swapWeapon2;
     [SerializeField] GameObject swapWeapon3;
 
-    bool sawp1;
-    bool sawp2;
-    bool sawp3;
+    public bool sawp1;
+    public bool sawp2;
+    public bool sawp3;
 
     void Start()
     {
@@ -23,25 +23,34 @@ public class WeaponManager : MonoBehaviour
         changeWeapon();
     }
 
-    private void changeWeapon()
+    public void changeWeapon()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             swapWeapon1.SetActive(true);
             swapWeapon2.SetActive(false);
             swapWeapon3.SetActive(false);
+            bool sawp1 = true;
+            bool sawp2 = false;
+            bool sawp3 = false;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             swapWeapon1.SetActive(false);
             swapWeapon2.SetActive(true);
             swapWeapon3.SetActive(false);
+            bool sawp1 = false;
+            bool sawp2 = true;
+            bool sawp3 = false;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             swapWeapon1.SetActive(false);
             swapWeapon2.SetActive(false);
             swapWeapon3.SetActive(true);
+            bool sawp1 = false;
+            bool sawp2 = false;
+            bool sawp3 = false;
         }
     }
 }

@@ -6,8 +6,8 @@ public class ShotWeapon : MonoBehaviour
 {
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject bullet;
-    [SerializeField] int bulletCount;
-    [SerializeField] int bulletCounting;
+    [SerializeField] public int bulletCount;
+    [SerializeField] public int bulletCounting;
 
     [SerializeField] float shotDelayTime;
     float shotDelayTimer;
