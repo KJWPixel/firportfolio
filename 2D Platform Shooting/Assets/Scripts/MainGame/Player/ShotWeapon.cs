@@ -1,27 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShotWeapon : MonoBehaviour
 {
+    [Header("총알 수 및 발사위치")]
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject bullet;
     [SerializeField] public int bulletCount;
     [SerializeField] public int bulletCounting;
 
+    [Header("발사 후 딜레이 시간")]
     [SerializeField] float shotDelayTime;
     float shotDelayTimer;
 
-    [SerializeField] Transform dynamicObject;
-
+    [Header("재장전 시간")]
     [SerializeField] float reloadTime;
     float reloadTimer;
+    [SerializeField] Image reloadeCanvas;
 
-    
+    [SerializeField] Transform dynamicObject;
+
+
 
     void Start()
     {
         initBulletCount();
+        
     }
 
     void Update()
@@ -33,6 +39,7 @@ public class ShotWeapon : MonoBehaviour
     private void initBulletCount()
     {
         bulletCounting = bulletCount;
+        
     }
     private void Shot()
     {
@@ -46,6 +53,7 @@ public class ShotWeapon : MonoBehaviour
         //축으로 부터 방향과 각도의 회전값
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
+
         shotDelayTimer += Time.deltaTime;
         if (Input.GetMouseButtonDown(0)) //마우스클릭 발사
         {
@@ -54,6 +62,7 @@ public class ShotWeapon : MonoBehaviour
                 //총알 생성                                                  //앵글 각도 
                 Instantiate(bullet, spawnPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward), dynamicObject);
                 bulletCounting--;
+                reloadeCanvas.fillAmount = bulletCounting / bulletCount;
                 shotDelayTimer = 0;               
             }
         }

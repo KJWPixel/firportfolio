@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text startGame;
     [SerializeField] TMP_Text gameOver;
 
-    [Header("남은 총알")]
-    [SerializeField] Image restBullet;
+    //[Header("남은 총알")]
+    //[SerializeField] Image restBullet;
 
     bool startGameArhpa; //게임 시작시 게임시작 페이즈 인 아웃에 대한 bool값
     bool gameOverArhpa;  //게임 오버시 게임오버 페이즈 인 아웃에 대한 bool값
@@ -28,14 +28,14 @@ public class GameManager : MonoBehaviour
     {
         initText();
         playerControll = PlayerControll.Instance;
-        weaponManager.GetComponent<WeaponManager>();
+        //weaponManager.GetComponent<WeaponManager>();
     }
 
     void Update()
     {
         startText();
         gameOvertext();
-        restFillAmount();
+        //restFillAmount();
     }
 
     private void initText()
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         startColor.a = 0f;
         Color overColor = gameOver.color;
         overColor.a = 0f;
-        restBullet.fillAmount = 1f;
+        //restBullet.fillAmount = 1f;
     }
 
     private void startText()//게임시작 시 텍스트 출력
@@ -106,12 +106,12 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    public void restFillAmount()
-    {
-        if (weaponManager.sawp1 == true) 
-        {
-            ShotWeapon shotWeapon = GetComponent<ShotWeapon>();
-            restBullet.fillAmount = shotWeapon.bulletCounting / shotWeapon.bulletCount;
-        }
-    }
+    //public void restFillAmount()
+    //{
+    //    if (weaponManager.sawp1 == true) 
+    //    {
+    //        ShotWeapon shotWeapon = GetComponent<ShotWeapon>();
+    //        restBullet.fillAmount = shotWeapon.bulletCounting / shotWeapon.bulletCount;
+    //    }
+    //}
 }
