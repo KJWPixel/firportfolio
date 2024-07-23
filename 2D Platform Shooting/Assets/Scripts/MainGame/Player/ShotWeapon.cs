@@ -18,7 +18,7 @@ public class ShotWeapon : MonoBehaviour
     [Header("재장전 시간")]
     [SerializeField] float reloadTime;
     float reloadTimer;
-    [SerializeField] Image reloadeCanvas;
+    [SerializeField] Image reloadeImage;
 
     [SerializeField] Transform dynamicObject;
 
@@ -32,8 +32,10 @@ public class ShotWeapon : MonoBehaviour
 
     void Update()
     {
-        Shot();
         reload();
+        Shot();
+        imagefillAmount();
+
     }
 
     private void initBulletCount()
@@ -62,7 +64,7 @@ public class ShotWeapon : MonoBehaviour
                 //총알 생성                                                  //앵글 각도 
                 Instantiate(bullet, spawnPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward), dynamicObject);
                 bulletCounting--;
-                reloadeCanvas.fillAmount = bulletCounting / bulletCount;
+                
                 shotDelayTimer = 0;               
             }
         }
@@ -70,14 +72,22 @@ public class ShotWeapon : MonoBehaviour
 
     private void reload()
     {
-        if (bulletCounting <= 0)//bulletCount가 0이 되면 Reload Time동작
+        if (bulletCounting <= 0)//bulletCount가 0이하가 되면 Reload Time동작
         {
+            bulletCounting = 0;
             reloadTimer += Time.deltaTime;
             if (reloadTimer > reloadTime)
             {
                 bulletCounting = bulletCount;
+                reloadTimer = 0;
             }
         }
+        
+    }
+
+    private void imagefillAmount()
+    {
+        reloadeImage.fillAmount =  (float)bulletCounting / (float)bulletCount;
     }
 
     
