@@ -14,10 +14,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] float tutorialTextTime = 5f;
     float tutorialTextTimer = 0f;
 
-    [Header("튜토리얼 메뉴얼 버튼")]
-    [SerializeField] Image tutorialsMenual;
-    [SerializeField] bool tutorialMenualOn;
-
     bool startGameArhpa; //게임 시작시 게임시작 페이즈 인 아웃에 대한 bool값
     bool gameOverArhpa;  //게임 오버시 게임오버 페이즈 인 아웃에 대한 bool값
     bool tutorialArhpa;
@@ -94,17 +90,11 @@ public class GameManager : MonoBehaviour
         }   
     }
 
-    private void tutorialsButton()
-    {
-
-    }
-
     private void gameOvertext()//게임오버 시 텍스트 출력
     {
         Color color = gameOver.color;
         gameOver.color = color;
         
-
         if (playerControll.playerDie == true)
         {
             if(gameOverArhpa == false)
