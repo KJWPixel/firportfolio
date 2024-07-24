@@ -7,18 +7,21 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("게임 스타트, 오버")]
+    [Header("게임 스타트, 오버, 튜토리얼, 설명")]
     [SerializeField] TMP_Text startGame;
     [SerializeField] TMP_Text gameOver;
+    [SerializeField] Image tutorialText;
+    [SerializeField] float tutorialTextTime = 5f;
+    float tutorialTextTimer = 0f;
 
-    //[Header("남은 총알")]
-    //[SerializeField] Image restBullet;
+    [Header("튜토리얼 메뉴얼 버튼")]
+    [SerializeField] Image tutorialsMenual;
+    [SerializeField] bool tutorialMenualOn;
 
     bool startGameArhpa; //게임 시작시 게임시작 페이즈 인 아웃에 대한 bool값
     bool gameOverArhpa;  //게임 오버시 게임오버 페이즈 인 아웃에 대한 bool값
-
-    public GameObject Sniper;
-    public GameObject ShotGun;
+    bool tutorialArhpa;
+    bool tutorialManual;
 
     PlayerControll playerControll;
     WeaponManager weaponManager;
@@ -28,12 +31,12 @@ public class GameManager : MonoBehaviour
     {
         initText();
         playerControll = PlayerControll.Instance;
-        //weaponManager.GetComponent<WeaponManager>();
     }
 
     void Update()
     {
-        startText();
+        startText();  
+        tutorials();   
         gameOvertext();
         //restFillAmount();
     }
@@ -45,6 +48,8 @@ public class GameManager : MonoBehaviour
         Color overColor = gameOver.color;
         overColor.a = 0f;
         //restBullet.fillAmount = 1f;
+        //tutorialText.gameObject.SetActive(false);
+        //tutorialsMenual.gameObject.SetActive(false);
     }
 
     private void startText()//게임시작 시 텍스트 출력
@@ -72,6 +77,26 @@ public class GameManager : MonoBehaviour
             }
             startGame.color = color;
         }
+    }
+
+    private void tutorials()
+    {
+        Color color = tutorialText.color;
+        tutorialText.color = color;
+        if (startGameArhpa == true)
+        {        
+            tutorialText.gameObject.SetActive(true);
+            tutorialTextTimer += Time.deltaTime;
+            if(tutorialTextTimer > tutorialTextTime)//Tiemr > Tiem보다 클 시 Text fasle
+            {
+                tutorialText.gameObject.SetActive(false);
+            }      
+        }   
+    }
+
+    private void tutorialsButton()
+    {
+
     }
 
     private void gameOvertext()//게임오버 시 텍스트 출력
@@ -105,13 +130,4 @@ public class GameManager : MonoBehaviour
             }
         } 
     }
-
-    //public void restFillAmount()
-    //{
-    //    if (weaponManager.sawp1 == true) 
-    //    {
-    //        ShotWeapon shotWeapon = GetComponent<ShotWeapon>();
-    //        restBullet.fillAmount = shotWeapon.bulletCounting / shotWeapon.bulletCount;
-    //    }
-    //}
 }

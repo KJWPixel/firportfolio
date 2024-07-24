@@ -77,12 +77,11 @@ public class ShotWeapon : MonoBehaviour
             bulletCounting = 0;
             reloadTimer += Time.deltaTime;
             if (reloadTimer > reloadTime)
-            {
+            {          
                 bulletCounting = bulletCount;
                 reloadTimer = 0;
             }
         }
-        
     }
 
     private void imagefillAmount()
