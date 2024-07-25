@@ -21,6 +21,8 @@ public class Menu : MonoBehaviour
     //캔버스 Inspector의 SortOrder는 Sprite의 Order in Layer와 비슷한 기능을함 숫자가 높을 수록 우선순위를 가짐
     //AutoCanvas -1, UICanvas 0 
 
+    bool menuWindowOn = false;
+
 
     private void Awake()
     {
@@ -44,7 +46,17 @@ public class Menu : MonoBehaviour
 
     private void menuButton()//인게임 좌상단 메뉴버튼 기능, 클릭시 메뉴창 띄움
     {
-        menuWindow.gameObject.SetActive(true);
+        //menuWindow.gameObject.SetActive(true);
+        if (menuWindowOn == false)
+        {
+            menuWindow.gameObject.SetActive(true);
+            menuWindowOn = true;          
+        }
+        else if(menuWindowOn == true)
+        {
+            menuWindow.gameObject.SetActive(false);
+            menuWindowOn = false;       
+        }      
     }
 
     private void menualButton()//메뉴목록창에 조작법설명을 클릭시 설명창을 띄움

@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 206816832800353115}
   - component: {fileID: 7016545928775942793}
   - component: {fileID: 3332901256206532268}
+  - component: {fileID: 992591699782770434}
   - component: {fileID: 3591091128005907869}
   - component: {fileID: 7392828434253454747}
   m_Layer: 0
@@ -126,7 +127,7 @@ Transform:
   - {fileID: 1368351860553976392}
   - {fileID: 6556230463160773379}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7016545928775942793
 SpriteRenderer:
@@ -194,14 +195,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 50
   hp: 50
-  moveSpeed: 2
+  moveSpeed: 6
   damage: 10
   chasePlayer: 0
   showChaseCheck: 0
   chaseDistance: 5
   chaseDistanceColor: {r: 1, g: 0, b: 0, a: 1}
   playerTrackingOn: 0
-  target: {fileID: 0}
+--- !u!114 &992591699782770434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989720643600865113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ce2ce17340ea14eab21441f8e0069d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  turnMove: 0
 --- !u!95 &3591091128005907869
 Animator:
   serializedVersion: 5
@@ -325,7 +339,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0053634644, y: 0.44895935}

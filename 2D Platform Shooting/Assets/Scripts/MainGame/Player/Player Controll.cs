@@ -75,7 +75,7 @@ public class PlayerControll : MonoBehaviour
     void Update()
     {
         checkGround();
-
+        curHpLimit();
         moving();
         jump();
         doublejump();
@@ -237,6 +237,14 @@ public class PlayerControll : MonoBehaviour
             invincibilty = false;
         }
         spriteRenderer.color = color;
+    }
+
+    private void curHpLimit()
+    {
+        if(curHp >= maxHp)
+        {
+            curHp = maxHp;
+        }
     }
 
     

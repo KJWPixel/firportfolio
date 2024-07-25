@@ -14,7 +14,7 @@ public class EnemyWalkControll : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        Invoke("turn", 5);
+        Invoke("turn", 3);
     }
 
     void Start()

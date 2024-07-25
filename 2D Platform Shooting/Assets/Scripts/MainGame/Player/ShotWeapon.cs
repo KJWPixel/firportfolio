@@ -57,7 +57,7 @@ public class ShotWeapon : MonoBehaviour
 
 
         shotDelayTimer += Time.deltaTime;
-        if (Input.GetMouseButtonDown(0)) //마우스클릭 발사
+        if (Input.GetMouseButton(0)) //마우스클릭 발사
         {
             if (shotDelayTimer > shotDelayTime && bulletCounting > 0)//ShotDelay 구현
             {
@@ -71,12 +71,13 @@ public class ShotWeapon : MonoBehaviour
     }
 
     private void reload()
-    {
-        if (bulletCounting <= 0)//bulletCount가 0이하가 되면 Reload Time동작
+    {     
+        if (bulletCounting <= 0)//bulletCount가 0이하가 되면 Reload동작
         {
             bulletCounting = 0;
             reloadTimer += Time.deltaTime;
-            if (reloadTimer > reloadTime)
+            
+            if (reloadTimer >= reloadTime)
             {          
                 bulletCounting = bulletCount;
                 reloadTimer = 0;
@@ -85,8 +86,12 @@ public class ShotWeapon : MonoBehaviour
     }
 
     private void imagefillAmount()
-    {
+    {      
         reloadeImage.fillAmount =  (float)bulletCounting / (float)bulletCount;
+        if(bulletCounting == 0)
+        {
+            reloadeImage.fillAmount = reloadTimer / reloadTime;
+        }
     }
 
     

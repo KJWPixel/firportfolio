@@ -64,15 +64,18 @@ public class Enemy : MonoBehaviour
                 break;
 
             case HitBox.enumHitBoxType.Chase:
-                chasePlayer = true;
+                if(other.tag == "Player")
+                {
+                    chasePlayer = true;
+                }            
                 break;
         }
     }
 
     public void TriggerStay(Collider2D other, HitBox.enumHitBoxType _type)
     {
-    }
 
+    }
     public void TriggerExit(Collider2D other, HitBox.enumHitBoxType _type)
     {
         switch (_type)
