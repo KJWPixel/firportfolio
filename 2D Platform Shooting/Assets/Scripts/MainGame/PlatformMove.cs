@@ -15,12 +15,11 @@ public class PlatformMove : MonoBehaviour
     [Header("플랫폼 특정위치까지")]
     [SerializeField] Transform trsLocationStart;
     [SerializeField] Transform trsLocationEnd;
-    Transform trsRepetition;
+    [SerializeField] bool trsRepetition;
 
     Rigidbody2D rigid;
     BoxCollider2D box2coll;
     Vector3 platformDir;
-
 
     //private void OnTriggerEnter2D(Collider2D collision)
     //{
@@ -39,29 +38,35 @@ public class PlatformMove : MonoBehaviour
     //        playerCheck = false;
     //    }
     //}
+
+    //collsion안에 있을때 자식으로 종속시키면 무브플랫폼와 플레이어가 동일하게 이동함
     void Start()
     {
         transform.position = trsLocationStart.position;
-        platformDir = transform.position;
-        trsRepetition = trsLocationEnd;
     }
 
     void Update()
     {
         platformMove();
-        //platformRepetition();
     }
 
     private void platformMove()
     {
-        transform.position = Vector2.MoveTowards(transform.position, trsLocationEnd.position, platformSpeed * Time.deltaTime);
-    }
-
-    private void platformRepetition()
-    {
-        if(trsRepetition == trsLocationEnd)
+        if(trsRepetition == false)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, trsLocationEnd.position, platformSpeed * Time.deltaTime);
+            if(transform.position == trsLocationEnd.position)
+            {
+                trsRepetition = true;
+            }
+        }
+        else if(trsRepetition == true)
         {
             transform.position = Vector2.MoveTowards(transform.position, trsLocationStart.position, platformSpeed * Time.deltaTime);
+            if (transform.position == trsLocationStart.position)
+            {
+               trsRepetition = false;
+            }
         }
     }
 }
