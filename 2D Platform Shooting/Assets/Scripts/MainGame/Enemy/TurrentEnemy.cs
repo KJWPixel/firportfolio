@@ -13,6 +13,9 @@ public class TurrentEnemy : MonoBehaviour
 
     [SerializeField] bool autoShot;
 
+    [Header("uncheck½Ã right check½Ã left")]
+    [SerializeField] public bool rightLeftcheck;
+
     //[SerializeField] bool showRayCheck;
     //[SerializeField] float showRayLengh;
     //[SerializeField] Color showRayColor;
@@ -37,11 +40,6 @@ public class TurrentEnemy : MonoBehaviour
         shot();
     }
 
-    private void checkPlayer()
-    {
-
-    }
-
     private void shot()
     {
         shotTimer += Time.deltaTime;
@@ -59,4 +57,5 @@ public class TurrentEnemy : MonoBehaviour
 
         //}
     }
+
 }
