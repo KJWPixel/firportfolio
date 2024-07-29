@@ -53,7 +53,7 @@ public class EnemyWalkControll : MonoBehaviour
         {
             turnMove *= -1;
             CancelInvoke();
-            Invoke("turn", 3);
+            Invoke("turn", 1);
         }
     }
 

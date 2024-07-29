@@ -46,20 +46,22 @@ public class GameClearDoor : MonoBehaviour
                     color.a = 1.0f;
                     gameText = true;
                 }
-                gameClearText.color = color;
+                gameClearText.color = color;               
             }
 
             if (gameText == true)
             {
-                color.a -= Time.deltaTime;
-                if (color.a <= 0.0f)//color.a값이 0이 되면 비활성화
-                {
-                    gameClearText.gameObject.SetActive(false);
-                }
-                gameClearText.color = color;
-
                 SceneManager.LoadScene(0);
+                //color.a -= Time.deltaTime;
+                //if (color.a <= 0.0f)//color.a값이 0이 되면 비활성화
+                //{
+                //    gameClearText.gameObject.SetActive(false);
+                //}
+                //gameClearText.color = color;
+
+                //SceneManager.LoadScene(0);
             }
+
         }
     }
 }

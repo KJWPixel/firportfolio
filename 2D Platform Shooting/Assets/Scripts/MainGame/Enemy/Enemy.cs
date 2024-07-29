@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] bool showChaseCheck;
     [SerializeField] float chaseDistance;
     [SerializeField] Color chaseDistanceColor;
-    [SerializeField] bool playerTrackingOn;
 
     Rigidbody2D rigid;
     Animator anim;
@@ -71,10 +70,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TriggerStay(Collider2D other, HitBox.enumHitBoxType _type)
-    {
-
-    }
     public void TriggerExit(Collider2D other, HitBox.enumHitBoxType _type)
     {
         switch (_type)
@@ -84,7 +79,11 @@ public class Enemy : MonoBehaviour
                 break;
 
             case HitBox.enumHitBoxType.Chase:
-                chasePlayer = false;
+                if (other.tag == "Player")
+                {
+                    chasePlayer = false;
+                }
+                
                 break;
         }
     }

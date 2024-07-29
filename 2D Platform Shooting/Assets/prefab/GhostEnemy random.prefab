@@ -196,12 +196,11 @@ MonoBehaviour:
   maxHp: 50
   hp: 50
   moveSpeed: 7
-  damage: 10
+  damage: 15
   chasePlayer: 0
   showChaseCheck: 0
   chaseDistance: 5
   chaseDistanceColor: {r: 1, g: 0, b: 0, a: 1}
-  playerTrackingOn: 0
 --- !u!114 &992591699782770434
 MonoBehaviour:
   m_ObjectHideFlags: 0

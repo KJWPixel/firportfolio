@@ -80,7 +80,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 9
 --- !u!1 &4863764964999490590
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,13 +184,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 15
   hp: 15
-  moveSpeed: 7.5
-  damage: 5
+  moveSpeed: 6.5
+  damage: 15
   chasePlayer: 0
   showChaseCheck: 1
-  chaseDistance: 7
+  chaseDistance: 9
   chaseDistanceColor: {r: 1, g: 0, b: 0, a: 1}
-  playerTrackingOn: 0
 --- !u!95 &8407451987733695450
 Animator:
   serializedVersion: 5
