@@ -23,8 +23,6 @@ public class CursorManager : MonoBehaviour
 
     }
 
-
-
     void Update()
     {
         Vector2 mouseWorldPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);

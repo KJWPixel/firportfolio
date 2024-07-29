@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 15
   hp: 15
-  moveSpeed: 6.5
+  moveSpeed: 5.5
   damage: 15
   chasePlayer: 0
   showChaseCheck: 1
