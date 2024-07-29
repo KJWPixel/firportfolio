@@ -8,8 +8,6 @@ public class EnemyTurretBullet : MonoBehaviour
     [SerializeField] float lifeTime;
     [SerializeField] float bulletDamage;
 
-    public bool bulletDirCheck;
-
     SpriteRenderer spriteRenderer;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,14 +36,7 @@ public class EnemyTurretBullet : MonoBehaviour
 
     private void bulletDir()
     {
-        if (bulletDirCheck == false)
-        {
-            transform.position += transform.right * bulletSpeed * Time.deltaTime;
-        }
-        else if (bulletDirCheck == true)
-        {
-            transform.position += -transform.right * bulletSpeed * Time.deltaTime;
-        }
+        transform.position += transform.right * bulletSpeed * Time.deltaTime;
     }
 
 }

@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f9a3250a7654f45bf2c4fc9381dc72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
-  hp: 20
+  maxHp: 35
+  hp: 35
   moveSpeed: 3
   damage: 5
   chasePlayer: 0
@@ -145,7 +145,6 @@ MonoBehaviour:
   chaseDistance: 0
   chaseDistanceColor: {r: 1, g: 0, b: 0, a: 1}
   playerTrackingOn: 0
-  target: {fileID: 4758295402195223013}
 --- !u!50 &1991890082761869246
 Rigidbody2D:
   serializedVersion: 4

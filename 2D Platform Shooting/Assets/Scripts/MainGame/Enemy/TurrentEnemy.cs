@@ -13,9 +13,6 @@ public class TurrentEnemy : MonoBehaviour
 
     [SerializeField] bool autoShot;
 
-    [Header("uncheck½Ã right check½Ã left")]
-    [SerializeField] public bool rightLeftcheck;
-
     //[SerializeField] bool showRayCheck;
     //[SerializeField] float showRayLengh;
     //[SerializeField] Color showRayColor;

@@ -131,10 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 669688869836919545}
-  enemyBullet: {fileID: 144296393417402122, guid: f664a40f2953ce44689ee99f503b997c, type: 3}
+  enemyBullet: {fileID: 144296393417402122, guid: ba77913414454594784f228fe82d775f, type: 3}
   dynamicObject: {fileID: 0}
   shotTime: 2
   autoShot: 1
+  rightLeftcheck: 0
 --- !u!61 &4843530269724426157
 BoxCollider2D:
   m_ObjectHideFlags: 0
