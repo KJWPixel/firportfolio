@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShotWeapon : MonoBehaviour
@@ -64,8 +65,8 @@ public class ShotWeapon : MonoBehaviour
                 //ÃÑ¾Ë »ý¼º                                                  //¾Þ±Û °¢µµ 
                 Instantiate(bullet, spawnPoint.position, Quaternion.AngleAxis(angle - 90, Vector3.forward), dynamicObject);
                 bulletCounting--;
-                
-                shotDelayTimer = 0;               
+
+                shotDelayTimer = 0;
             }
         }
     }

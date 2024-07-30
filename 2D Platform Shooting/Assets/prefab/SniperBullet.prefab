@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 25
-  lifeTime: 3
+  lifeTime: 1.5
   bulletDamage: 15
 --- !u!70 &392536126595887519
 CapsuleCollider2D:
