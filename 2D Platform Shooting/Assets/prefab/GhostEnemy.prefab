@@ -241,7 +241,7 @@ MonoBehaviour:
   maxHp: 30
   hp: 30
   moveSpeed: 7
-  damage: 8
+  damage: 15
   chasePlayer: 0
   showChaseCheck: 0
   chaseDistance: 5

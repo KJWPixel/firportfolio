@@ -139,12 +139,11 @@ MonoBehaviour:
   maxHp: 20
   hp: 20
   moveSpeed: 3
-  damage: 5
+  damage: 10
   chasePlayer: 0
   showChaseCheck: 0
   chaseDistance: 0
   chaseDistanceColor: {r: 1, g: 0, b: 0, a: 1}
-  playerTrackingOn: 0
 --- !u!50 &2697110139776591775
 Rigidbody2D:
   serializedVersion: 4
