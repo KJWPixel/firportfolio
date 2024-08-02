@@ -186,6 +186,8 @@ MonoBehaviour:
   hp: 15
   moveSpeed: 6.5
   damage: 5
+  invincibiltyTime: 0.25
+  invincibiltyTimer: 0
   chasePlayer: 0
   showChaseCheck: 1
   chaseDistance: 9

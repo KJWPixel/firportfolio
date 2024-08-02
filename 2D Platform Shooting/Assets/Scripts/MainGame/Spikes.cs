@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
     [SerializeField] float damage;
+    [SerializeField] float rebound;
     BoxCollider2D box2coll;
 
     private void OnTriggerEnter2D(Collider2D collision)

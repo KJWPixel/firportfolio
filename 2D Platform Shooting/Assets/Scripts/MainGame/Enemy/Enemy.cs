@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float hp;
     [SerializeField] float moveSpeed;
     [SerializeField] public float damage;
+
+    [SerializeField] float invincibiltyTime;
+    [SerializeField] float invincibiltyTimer;
+    bool enemyinvincibiltyCheck;
     bool enemyDie = false;
     Transform Player;
 
@@ -94,6 +98,7 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         Hitbox = GetComponent<HitBox>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -106,6 +111,7 @@ public class Enemy : MonoBehaviour
     {
         playerTracking();
         turnAnims();
+        invincibiltyCheck();
     }
 
     public void Hit(float _damage)
@@ -116,12 +122,31 @@ public class Enemy : MonoBehaviour
         }
 
         hp -= _damage;
+        enemyinvincibiltyCheck = true;
 
         if (hp <= 0)
         {
             enemyDie = true;
             Destroy(gameObject);
         }
+    }
+
+    private void invincibiltyCheck()
+    {
+        Color color = spriteRenderer.color;
+        if (enemyinvincibiltyCheck == true)
+        {
+            color.a = 0.5f;
+            invincibiltyTimer += Time.deltaTime;
+        }
+
+        if(invincibiltyTimer > invincibiltyTime)
+        {
+            color.a = 1f;
+            invincibiltyTimer = 0;
+            enemyinvincibiltyCheck = false;
+        }
+        spriteRenderer.color = color;
     }
 
     private void playerTracking()

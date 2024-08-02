@@ -21,23 +21,23 @@ public class PlatformMove : MonoBehaviour
     BoxCollider2D box2coll;
     Vector3 platformDir;
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    PlayerControll player = collision.GetComponent<PlayerControll>();
-    //    if (collision.tag == "Player")
-    //    {
-    //        playerCheck = true;
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            GameObject player = GameObject.Find("Player");
+            player.transform.parent = transform;
+        }
+    }
 
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    PlayerControll player = collision.GetComponent<PlayerControll>();
-    //    if(collision.tag == "Player")
-    //    {
-    //        playerCheck = false;
-    //    }
-    //}
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            GameObject player = GameObject.Find("Player");
+            player.transform.SetParent(null);
+        }
+    }
 
     //collsion안에 있을때 자식으로 종속시키면 무브플랫폼와 플레이어가 동일하게 이동함
     void Start()

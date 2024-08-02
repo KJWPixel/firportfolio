@@ -41,7 +41,16 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        
+        menuCont();
+    }
+
+    private void menuCont()
+    {
+        if ((Input.GetKeyDown(KeyCode.Escape)))
+        {
+            menuButton();//ESC키를 누르면 menuButton함수 실행 다시 누르면 메뉴창이 꺼짐
+        }
+
     }
 
     private void menuButton()//인게임 좌상단 메뉴버튼 기능, 클릭시 메뉴창 띄움

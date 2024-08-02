@@ -13,7 +13,7 @@ public class PlayerControll : MonoBehaviour
 
     [Header("플레이어 이동 및 점프")]
     [SerializeField] float moveSpeed;
-    [SerializeField] float jumpForce;
+    [SerializeField] public float jumpForce;
     [SerializeField] int doublejumpCount;
     int doublejumpCounting;
     [SerializeField] bool jumping;
@@ -112,6 +112,7 @@ public class PlayerControll : MonoBehaviour
     {
         if (jumping == true && Input.GetKeyDown(KeyCode.Space) && isGround == false && doublejumpCounting > 0)
         {
+            verticalVelocity = 0;
             verticalVelocity += jumpForce;
             doublejumpCounting--;
         }

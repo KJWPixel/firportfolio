@@ -136,10 +136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f9a3250a7654f45bf2c4fc9381dc72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
-  hp: 20
+  maxHp: 25
+  hp: 25
   moveSpeed: 3
   damage: 10
+  invincibiltyTime: 0.25
+  invincibiltyTimer: 0
   chasePlayer: 0
   showChaseCheck: 0
   chaseDistance: 0
