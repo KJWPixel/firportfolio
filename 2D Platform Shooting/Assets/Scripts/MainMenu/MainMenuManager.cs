@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -20,8 +21,8 @@ public class MainMenuManager : MonoBehaviour
         init();
         btnStart.onClick.AddListener(gameStart);
         btnExit.onClick.AddListener(gameExit);
-        btnExit.onClick.AddListener(exitWindowbtnNo);
-        btnExit.onClick.AddListener(exitWindowbtnYes);
+        btnExitWindowNo.onClick.AddListener(exitWindowbtnNo);
+        btnExitWindowYes.onClick.AddListener(exitWindowbtnYes);
     }
 
     private void init()
@@ -34,16 +35,13 @@ public class MainMenuManager : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void gameStart()
     {
         //게임시작 메인게임으로 이동
-        SceneManager.LoadScene(1);
+        if (exitWindowOn == false)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     private void gameExit()
@@ -62,8 +60,8 @@ public class MainMenuManager : MonoBehaviour
         if(exitWindowOn == true)
         {
             ExitWindow.SetActive(false);
-            exitWindowOn = false;       
-        }     
+            exitWindowOn = false;
+        } 
     }
 
     private void exitWindowbtnYes() 
